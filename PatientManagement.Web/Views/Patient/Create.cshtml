@@ -1,0 +1,187 @@
+﻿@using PatinetManagement.DataAccess.Domain
+@using PatinetManagement.DataAccess.Enums
+@using PatinetManagement.Utility.ViewModels
+@model PatientViewModel
+@{
+    ViewData["Title"] = "Create";
+    var diseases = (List<DiseaseInformation>)ViewBag.DiseaseList;
+    var allergies = (List<Allergies>)ViewBag.AllergiesList;
+    var ncds = (List<NCD>)ViewBag.NCDList;
+    var epilepsy = ViewBag.Epilepsy as Dictionary<int, string>;
+}
+<style>
+    .container {
+        border-radius: 1rem;
+    }
+
+    .text-info {
+        color: dodgerblue;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-select,
+    .form-control {
+        border-radius: 0.5rem;
+    }
+
+    #selectedNCDs,
+    #selectedAllergies {
+        border: 1px solid #ccc;
+        /* padding: 10px; */
+        border-radius: 0.5rem;
+        margin-top: 35px;
+        height: 100px;
+    }
+
+    .box {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: skyblue;
+        font-size: 14px;
+    }
+
+    .remove-button, .remove-buttonN {
+        cursor: pointer;
+    }
+</style>
+<div class="container shadow-lg rounded-3 mt-4 p-4">
+    <form asp-action="Create" method="post">
+        <div class="row">
+            <h3 class="text-info">Create Patient Information</h3>
+            <hr />
+            <div class="col-sm-12 my-2">
+                <label class="form-label">Patient Name</label>
+                <input class="form-control" asp-for="PatientName" placeholder="Please Enter Patient Name" required />
+            </div>
+            <div class="col-sm-6 my-2">
+                <label class="form-label">Disease Name</label>
+                <select class="form-control" asp-for="Patient.DiseaseInformationId">
+                    <option value="0">Select Disease</option>
+                    @if (diseases != null)
+                    {
+                        foreach (var disease in diseases)
+                        {
+                            <option value="@disease.Id">@disease.DiseaseName</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-sm-6 my-2">
+                <label class="form-label">Epilepsy</label>
+                <select class="form-control" asp-for="Patient.EpilepsyId">
+                    <option value="0">Select Epilepsy</option>
+                    @if (epilepsy != null)
+                    {
+                        foreach (var epi in epilepsy)
+                        {
+                            <option value="@epi.Key">@epi.Value</option>
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="col-sm-6 my-2">
+                <label class="form-label">NCDs</label>
+                <select class="form-control" id="NCDsDropdown" multiple asp-for="NCD_Details">
+                    @if (ncds != null)
+                    {
+                        foreach (var ncd in ncds)
+                        {
+                            <option value="@ncd.Id">@ncd.NCDName</option>
+                        }
+                    }
+                </select>
+               @*  <input type="hidden" asp-for="" id="NCDDetailsId" /> *@
+            </div>
+            <div class="col-sm-6 my-2">
+                <div id="selectedNCDs"></div>
+            </div>
+            <div class="col-sm-6 my-2">
+                <label class="form-label">Allergies</label>
+                <select class="form-control" id="allergiesDropdown" multiple asp-for="AllergiesDetails">
+                    @if (allergies != null)
+                    {
+                        foreach (var alle in allergies)
+                        {
+                            <option value="@alle.Id">@alle.AllergiesName</option>
+                        }
+                    }
+                </select>
+               @*  <input type="hidden" asp-for="AllergiesDetailsId" id="AllergiesDetailsId" /> *@
+            </div>
+            <div class="col-sm-6 my-2">
+                <div id="selectedAllergies"></div>
+            </div>
+            <div class="col-sm-12 text-center my-2">
+                <button type="submit" class="btn btn-outline-info">Save</button>
+            </div>
+            <a class="text-end" asp-action="Index" asp-controller="Patient">Back To Patient List</a>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#allergiesDropdown').on('change', function () {
+                var selectedOptions = $(this).find('option:selected');
+
+                selectedOptions.each(function () {
+                    var selectedValue = $(this).val();
+                    var selectedText = $(this).text();
+                    if (selectedValue != "0") {
+                        var existingBox = $('#selectedAllergies').find('.box[data-allergy-value="' + selectedValue + '"]');
+                        if (existingBox.length === 0) {
+                            var boxHtml = '<div class="box" data-allergy-value="' + selectedValue + '">' +
+                                '<span class="allergy-text">' + selectedText + '</span> &nbsp;' +
+                                '<span class="remove-button"><i class="fa-regular fa-circle-xmark"></i></span>' +
+                                '</div>';
+                            $('#selectedAllergies').append(boxHtml);
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.remove-button', function () {
+                $(this).parent().remove();
+            });
+            $('#NCDsDropdown').on('change', function () {
+                var selectedOptions = $(this).find('option:selected');
+
+                selectedOptions.each(function () {
+                    var selectedValue = $(this).val();
+                    var selectedText = $(this).text();
+                    if (selectedValue != "0") {
+                        var existingBox = $('#selectedNCDs').find('.box[data-allergy-value="' + selectedValue + '"]');
+                        if (existingBox.length === 0) {
+                            var boxHtml = '<div class="box" data-ncds-value="' + selectedValue + '">' +
+                                '<span class="ncds-text">' + selectedText + '</span> &nbsp;' +
+                                '<span class="remove-buttonN"><i class="fa-regular fa-circle-xmark"></i></span>' +
+                                '</div>';
+                            $('#selectedNCDs').append(boxHtml);
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.remove-buttonN', function () {
+                $(this).parent().remove();
+            });
+            $('#NCDsDropdown').on('change', updateHiddenFields);
+            $('#allergiesDropdown').on('change', updateHiddenFields);
+        });
+        function updateHiddenFields() {
+            var selectedNCDs = $('#NCDsDropdown').val();
+            var selectedAllergies = $('#allergiesDropdown').val();
+
+            $('#NCDDetailsId').val(selectedNCDs.join(','));
+            $('#AllergiesDetailsId').val(selectedAllergies.join(','));
+        }
+    </script>
+}

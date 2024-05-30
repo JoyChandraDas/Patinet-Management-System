@@ -1,0 +1,190 @@
+[
+  {
+    "ContainingType": "PatientManagement.API.Controllers.DiseaseController",
+    "Method": "DeleteDisease",
+    "RelativePath": "api/Disease/DeleteDisease/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.DiseaseController",
+    "Method": "GetAllDisease",
+    "RelativePath": "api/Disease/GetAllDisease",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.DiseaseController",
+    "Method": "GetDisease",
+    "RelativePath": "api/Disease/GetDisease/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.DiseaseController",
+    "Method": "SaveDisease",
+    "RelativePath": "api/Disease/SaveDisease",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "disease",
+        "Type": "PatinetManagement.DataAccess.Domain.DiseaseInformation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.DiseaseController",
+    "Method": "UpdateDisease",
+    "RelativePath": "api/Disease/UpdateDisease/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "disease",
+        "Type": "PatinetManagement.DataAccess.Domain.DiseaseInformation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "DeletePatient",
+    "RelativePath": "api/PatientInformation/DeletePatient/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "GetAllergiesList",
+    "RelativePath": "api/PatientInformation/GetAllergiesList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "GetDiseaseList",
+    "RelativePath": "api/PatientInformation/GetDiseaseList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "GetNDCsList",
+    "RelativePath": "api/PatientInformation/GetNDCsList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "GetPatientInformation",
+    "RelativePath": "api/PatientInformation/GetPatientInformation/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "PatientInformationList",
+    "RelativePath": "api/PatientInformation/PatientInformationList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "SavePatient",
+    "RelativePath": "api/PatientInformation/SavePatient",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "PatinetManagement.Utility.ViewModels.PatientViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PatientManagement.API.Controllers.PatientInformationController",
+    "Method": "UpdatePatient",
+    "RelativePath": "api/PatientInformation/UpdatePatient/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "PatinetManagement.Utility.ViewModels.PatientViewModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

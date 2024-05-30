@@ -1,0 +1,28 @@
+﻿@using PatinetManagement.Utility.ViewModels
+@model DiseasesViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container shadow-lg rounded-3 mt-4 p-4" style="width:650px;">
+    <form asp-action="Edit" method="post">
+        <div class="row">
+            <h3 class="text-info">Update Diseases</h3>
+            <hr />
+            <div class="col-sm-12 my-2">
+                <label class="form-label">Disease Name</label>
+                <input class="form-control" asp-for="DiseaseName" placeholder="Please Enter Deases Name" required/>
+                <span asp-validation-for="DiseaseName" class="text-danger"></span>
+            </div>
+            <div class="col-sm-12 text-center my-2">
+                <button type="submit" class="btn btn-outline-warning">Update</button>
+            </div>
+            <a class="text-end" asp-action="Index" asp-controller="DiseaseInformation">Back To Diseases List</a>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

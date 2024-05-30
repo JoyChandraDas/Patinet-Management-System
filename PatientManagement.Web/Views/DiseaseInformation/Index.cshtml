@@ -1,0 +1,38 @@
+﻿@using PatinetManagement.Utility.ViewModels
+@model IEnumerable<DiseasesViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container shadow-lg rounded-3 mt-4 p-3" style="width:650px;">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3 class="text-info">Diseases Information List</h3>
+        </div>
+        <div class="col-sm-4 text-end">
+            <a class="btn btn-outline-info" asp-action="Create" asp-controller="DiseaseInformation">Add Disease &nbsp; <i class="fa-solid fa-circle-plus"></i></a>
+        </div>
+    </div>
+    <hr />
+    <table class="table table-responsive table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">Disease Name</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">@item.DiseaseName</td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-success" asp-route-id="@item.Id" asp-action="Edit" asp-controller="DiseaseInformation"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="btn btn-outline-danger" asp-route-id="@item.Id" asp-action="Delete" asp-controller="DiseaseInformation"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,101 @@
+Name : Joy Chandra Das
+Cellphone : 01984355744
+Email : nirjhor268@gmail.com
+
+
+Question 1 : 
+ 
+Doctor Table : Doctor (primary key) , Contact Number, Department (Foreign Key)
+
+Doctor Service Table : Doctor (Foreign key reference from Doctor table),Service point primary key
+
+   
+Diagram : 
+           (1)             (N)
+Doctors ------> Doctor   Services 
+           |
+           V  (M)
+Departments
+
+Question 2 : 45
+
+Question 3 : 
+Method Overloading : Allows to define multiple methods with the same name but different parameter lists within the same class.
+Example : 
+Public int Add(int x, int y){
+return x + y;
+}
+Public double Add(double x, double y){
+return x + y;
+}
+public static void Main(string[] args)
+{
+  Calculator calc = new Calculator();
+  int sum1 = calc.Add(5, 3);
+  double sum2 = calc.Add(2.5, 1.8);
+  Console.WriteLine(sum1); 
+  Console.WriteLine(sum2);
+}
+Method Overriding: 
+Occurs when a derived class (child class) redefines a method inherited from its base class (parent class).
+
+Example : 
+public class Shape
+{
+  public virtual double GetArea()
+  {
+    return 0; 
+  }
+}
+
+public class Circle : Shape
+{
+  public double Radius { get; set; }
+
+  public override double GetArea()
+  {
+    return Math.PI * Radius * Radius;
+  }
+}
+public static void Main(string[] args)
+{
+  Circle circle = new Circle { Radius = 5 };
+  Shape shape = circle;
+
+  double circleArea = circle.GetArea();
+  double shapeArea = shape.GetArea();
+
+  Console.WriteLine(circleArea);
+  Console.WriteLine(shapeArea);
+}
+** Marked as virtual for overriding
+
+
+Question 5 :
+
+public class MinFinder
+{
+  public static void Main(string[] args)
+  {
+    int n1, n2, n3, min;
+
+    Console.WriteLine("Enter three integer values:");
+    n1 = int.Parse(Console.ReadLine());
+    n2 = int.Parse(Console.ReadLine());
+    n3 = int.Parse(Console.ReadLine());
+
+    min = n1;
+
+    if (n2 < min)
+    {
+      min = n2;
+    }
+
+    if (n3 < min)
+    {
+      min = n3;
+    }
+
+    Console.WriteLine("The minimum value is: " + min);
+  }
+}
